@@ -34,10 +34,8 @@ namespace StreamRipperConsole
             myRipper = new Mp3StromReisser();
             myRipper.StartRip(myStreamSource);
 
-            var now = DateTime.Now;
-            var filePrefix = "Energy_Mastermix";
-            var fileName = $"{filePrefix}_{now.Day:00}-{now.Month:00}-{now.Year}_{now.Hour:00}-{now.Minute:00}-{now.Second:00}.mp3";
-            var fileLocation = Path.Combine(@"P:\tmp", fileName);
+            var fileLocation = GetFileLocation();
+            Console.WriteLine($"Writing to {fileLocation}");
 
             myRecorder = new Mp3StromAufzeichner((Mp3StromReisser)myRipper, fileLocation);
             myRecorder.StartRecord();
@@ -55,5 +53,23 @@ namespace StreamRipperConsole
 
             Console.WriteLine("End World!");
         }
+
+        private static string GetFileLocation()
+        {
+            var now = DateTime.Now;
+            var filePrefix = "Energy_Mastermix";
+            var pathPrefix = @"P:\tmp\Mastermix";
+            var dateStr = $"{now.Year}-{now.Month:00}-{now.Day:00}";
+            var timeStr = $"{now.Hour:00}-{now.Minute:00}-{now.Second:00}";
+            var fileName = $"{filePrefix}_{dateStr}_{timeStr}.mp3";
+            var directoryLocation = Path.Combine(pathPrefix, dateStr);
+            var fileLocation = Path.Combine(directoryLocation, fileName);
+
+            if (!Directory.Exists(directoryLocation))
+                Directory.CreateDirectory(directoryLocation);
+
+            return fileLocation;
+        }
+
     }
 }
