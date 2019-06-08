@@ -42,13 +42,13 @@ namespace StreamRipper.Domain {
                 );
 
                 _decompressor = new AcmMp3FrameDecompressor(_waveFormat);
-                var appSetting = AppSettings.Current;
+                //var appSetting = AppSettings.Current;
 
-                if(appSetting.RecordBacktrackSeconds > 0) {
-                    // ms per frame = (samples per frame / sample rate(in hz)) * 1000
-                    var backFrameStackSize = (appSetting.RecordBacktrackSeconds * 1000) / (((float)_currentFrame.SampleCount / (float)_currentFrame.SampleRate) * 1000);
-                    BackFrames = new PipeQueue<FrameDecompressedEventArgs<Mp3Frame>>((int)Math.Ceiling(backFrameStackSize));
-                }
+                //if(appSetting.RecordBacktrackSeconds > 0) {
+                //    // ms per frame = (samples per frame / sample rate(in hz)) * 1000
+                //    var backFrameStackSize = (appSetting.RecordBacktrackSeconds * 1000) / (((float)_currentFrame.SampleCount / (float)_currentFrame.SampleRate) * 1000);
+                //    BackFrames = new PipeQueue<FrameDecompressedEventArgs<Mp3Frame>>((int)Math.Ceiling(backFrameStackSize));
+                //}
             }
 
             int decompressed = _decompressor.DecompressFrame(_currentFrame, _buffer, 0);
