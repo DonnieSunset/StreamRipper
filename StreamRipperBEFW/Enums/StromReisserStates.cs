@@ -1,6 +1,6 @@
 ﻿
-namespace StromReisser3000.Enums {
-    public enum StromReisserStates {
+namespace StreamRipper.Enums {
+    public enum StreamRipperStates {
         Stopped,
         Running,
         Stopping

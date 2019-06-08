@@ -52,16 +52,16 @@
     <Compile Include="Domain\AppSettings.cs" />
     <Compile Include="Domain\BufferedStream.cs" />
     <Compile Include="Domain\FrameDecompressedEventArgs.cs" />
-    <Compile Include="Domain\Mp3StromAufzeichner.cs" />
-    <Compile Include="Domain\Mp3StromReisser.cs" />
+    <Compile Include="Domain\Mp3StreamRecorder.cs" />
+    <Compile Include="Domain\Mp3StreamRipper.cs" />
     <Compile Include="Domain\PipeQueue.cs" />
     <Compile Include="Domain\StreamSource.cs" />
-    <Compile Include="Enums\StromAufzeichnerStates.cs" />
+    <Compile Include="Enums\StreamRecorderStates.cs" />
     <Compile Include="Enums\StromReisserStates.cs" />
     <Compile Include="Exceptions\RipFailedException.cs" />
     <Compile Include="Interfaces\ISerializable.cs" />
-    <Compile Include="Interfaces\IStromAufzeichner.cs" />
-    <Compile Include="Interfaces\IStromReisser.cs" />
+    <Compile Include="Interfaces\IStreamRecorder.cs" />
+    <Compile Include="Interfaces\IStreamRipper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

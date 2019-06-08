@@ -1,18 +1,18 @@
-﻿using StromReisser3000.Domain;
-using StromReisser3000.Enums;
+﻿using StreamRipper.Domain;
+using StreamRipper.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StromReisser3000.Interfaces {
+namespace StreamRipper.Interfaces {
     public delegate void RecordingEndedDelegate(Exception e);
 
-    public interface IStromAufzeichner : IDisposable {
-        IStromReisser CurrentRipper { get; }
+    public interface IStreamRecorder : IDisposable {
+        IStreamRipper CurrentRipper { get; }
         string OutputFileName { get; }
-        StromAufzeichnerStates State { get; }
+        StreamRecorderStates State { get; }
 
         void StartRecord();
         void PauseRecord();

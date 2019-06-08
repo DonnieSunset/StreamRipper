@@ -1,10 +1,10 @@
-﻿using StromReisser3000.Interfaces;
+﻿using StreamRipper.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StromReisser3000.Enums;
+using StreamRipper.Enums;
 using System.Threading;
 using System.Net;
 using System.IO;
@@ -12,10 +12,10 @@ using NAudio.Wave;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 
-namespace StromReisser3000.Domain {
+namespace StreamRipper.Domain {
     public delegate void FrameDecompressedDelegate<TFrameType>(FrameDecompressedEventArgs<TFrameType> e);
 
-    public abstract class AbstractStromReisser<TFrameType> : IStromReisser {
+    public abstract class AbstractStreamRipperr<TFrameType> : IStreamRipper {
         private const int STOP_WAIT_TIMEOUT = 10000;
 
         private BackgroundWorker _worker = null;
@@ -23,7 +23,7 @@ namespace StromReisser3000.Domain {
 
         public StreamSource CurrentStreamSource { get; private set; } = null;
 
-        public StromReisserStates State { get; private set; } = StromReisserStates.Stopped;
+        public StreamRipperStates State { get; private set; } = StreamRipperStates.Stopped;
 
         public PipeQueue<FrameDecompressedEventArgs<TFrameType>> BackFrames { get; protected set; }
 
@@ -94,7 +94,7 @@ namespace StromReisser3000.Domain {
         }
 
         public void StartRip(StreamSource streamSource) {
-            if(State != StromReisserStates.Stopped) {
+            if(State != StreamRipperStates.Stopped) {
                 throw new InvalidOperationException("The ripper is already running or not fully stopped yet.");
             }
 
@@ -122,7 +122,7 @@ namespace StromReisser3000.Domain {
 
                 try {
                     _stopHandle = new EventWaitHandle(false, EventResetMode.ManualReset);
-                    State = StromReisserStates.Running;
+                    State = StreamRipperStates.Running;
                     CurrentStreamSource = streamSource;
 
                     using(var responseStream = resp.GetResponseStream()) {
@@ -134,7 +134,7 @@ namespace StromReisser3000.Domain {
                                 e.Cancel = true;
                                 break;
                             }
-                        } while(State == StromReisserStates.Running);
+                        } while(State == StreamRipperStates.Running);
                     }
                 } catch(EndOfStreamException) {
                     // reached the end of the MP3 file / stream
@@ -142,7 +142,7 @@ namespace StromReisser3000.Domain {
                     // probably we have aborted download from the GUI thread
                 } finally {
                     RipLoopCleanup();
-                    State = StromReisserStates.Stopped;
+                    State = StreamRipperStates.Stopped;
                     _stopHandle.Set();
                 }
             };
@@ -151,11 +151,11 @@ namespace StromReisser3000.Domain {
         }
 
         public void StopRip() {
-            if(State != StromReisserStates.Running) {
+            if(State != StreamRipperStates.Running) {
                 return;
             }
 
-            State = StromReisserStates.Stopping;
+            State = StreamRipperStates.Stopping;
             if(_stopHandle != null) {
                 if(!_stopHandle.WaitOne(STOP_WAIT_TIMEOUT)) {
                     // The dispose below might cause problems here.
@@ -173,7 +173,7 @@ namespace StromReisser3000.Domain {
 
             // This is actually done in the finally block of the thread, but
             // we set it in case we have to harshly abandon a locked thread.
-            State = StromReisserStates.Stopped;
+            State = StreamRipperStates.Stopped;
         }
 
         public void Dispose() {

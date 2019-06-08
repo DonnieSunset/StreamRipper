@@ -1,4 +1,4 @@
-﻿using StromReisser3000.Interfaces;
+﻿using StreamRipper.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StromReisser3000.Domain {
+namespace StreamRipper.Domain {
     public class StreamSource : ISerializable {
         private string _filePrefix = null;
 

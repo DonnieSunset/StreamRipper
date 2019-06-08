@@ -1,7 +1,7 @@
 ﻿using CommandLine;
 using StreamRipperConsoleFW.CLI;
-using StromReisser3000.Domain;
-using StromReisser3000.Interfaces;
+using StreamRipper.Domain;
+using StreamRipper.Interfaces;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -11,8 +11,8 @@ namespace StreamRipperConsole
 {
     class Program
     {
-        private static IStromReisser myRipper;
-        private static IStromAufzeichner myRecorder;
+        private static IStreamRipper myRipper;
+        private static IStreamRecorder myRecorder;
         private static StreamSource myStreamSource;
         private static Options options;
 
@@ -31,13 +31,13 @@ namespace StreamRipperConsole
                 StreamUrl = "http://energyradio.de/nuernberg"
             };
 
-            myRipper = new Mp3StromReisser();
+            myRipper = new Mp3StreamRipper();
             myRipper.StartRip(myStreamSource);
 
             var fileLocation = GetFileLocation();
             Console.WriteLine($"Writing to {fileLocation}");
 
-            myRecorder = new Mp3StromAufzeichner((Mp3StromReisser)myRipper, fileLocation);
+            myRecorder = new Mp3StreamRecorder((Mp3StreamRipper)myRipper, fileLocation);
             myRecorder.StartRecord();
 
             var sw = new Stopwatch();

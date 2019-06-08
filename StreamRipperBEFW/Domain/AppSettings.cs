@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace StromReisser3000.Domain {
-    [XmlRoot(Namespace = "StromReisser3000", ElementName = nameof(AppSettings))]
+namespace StreamRipper.Domain {
+    [XmlRoot(Namespace = "StreamRipper", ElementName = nameof(AppSettings))]
     public class AppSettings {
         private const string DEFAULT_FILE_NAME = "Settings.xml";
         public static string DefaultFileName { get { return DEFAULT_FILE_NAME; } }

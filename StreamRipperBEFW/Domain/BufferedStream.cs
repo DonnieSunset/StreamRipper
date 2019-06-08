@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StromReisser3000.Domain {
+namespace StreamRipper.Domain {
     public class BufferedStream : Stream {
         // The logic was taken from the streaming code sample by NAudio and adapted
         // and commented where necessary.

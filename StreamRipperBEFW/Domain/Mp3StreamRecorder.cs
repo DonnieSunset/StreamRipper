@@ -1,7 +1,7 @@
 ﻿using NAudio.Lame;
 using NAudio.Wave;
-using StromReisser3000.Enums;
-using StromReisser3000.Interfaces;
+using StreamRipper.Enums;
+using StreamRipper.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,16 +9,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StromReisser3000.Domain {
-    public class Mp3StromAufzeichner : AbstractStromAufzeichner<Mp3Frame> {
-        private AbstractStromReisser<Mp3Frame> _ripper;
+namespace StreamRipper.Domain {
+    public class Mp3StreamRecorder : AbstractStreamRecorder<Mp3Frame> {
+        private AbstractStreamRipperr<Mp3Frame> _ripper;
         private NAudio.Lame.LameMP3FileWriter _mp3writer = null;
         private Stream _fileStream = null;
         private object _lck = new object();
 
-        public override IStromReisser CurrentRipper { get { return _ripper; } }
+        public override IStreamRipper CurrentRipper { get { return _ripper; } }
 
-        public Mp3StromAufzeichner(AbstractStromReisser<Mp3Frame> ripper, string outputFileName) {
+        public Mp3StreamRecorder(AbstractStreamRipperr<Mp3Frame> ripper, string outputFileName) {
             if(ripper == null) {
                 throw new ArgumentNullException(nameof(ripper));
             }
@@ -50,15 +50,15 @@ namespace StromReisser3000.Domain {
 
         public override void StartRecord() {
             lock(_lck) {
-                if(State == StromAufzeichnerStates.Recording) {
+                if(State == StreamRecorderStates.Recording) {
                     return;
                 }
 
-                if(State != StromAufzeichnerStates.Paused) {
+                if(State != StreamRecorderStates.Paused) {
                     _fileStream = File.Open(OutputFileName, FileMode.Create);
                 }
 
-                State = StromAufzeichnerStates.Recording;
+                State = StreamRecorderStates.Recording;
                 var backItems = _ripper.BackFrames?.Items;
                 if(backItems != null) {
                     foreach(var f in backItems) {
@@ -72,12 +72,12 @@ namespace StromReisser3000.Domain {
 
         public override void PauseRecord() {
             lock (_lck) {
-                if((State == StromAufzeichnerStates.Stopped) || (CurrentRipper == null)) {
+                if((State == StreamRecorderStates.Stopped) || (CurrentRipper == null)) {
                     return;
                 }
 
                 _ripper.FrameDecompressed -= OnFrameDecompressed;
-                State = StromAufzeichnerStates.Paused;
+                State = StreamRecorderStates.Paused;
             }
         }
 
@@ -100,7 +100,7 @@ namespace StromReisser3000.Domain {
                     _fileStream = null;
                 }
 
-                State = StromAufzeichnerStates.Stopped;
+                State = StreamRecorderStates.Stopped;
 
                 if(_recordingEnded != null) {
                     _recordingEnded(e);
@@ -115,7 +115,7 @@ namespace StromReisser3000.Domain {
         }
 
         private void WriteFrame(FrameDecompressedEventArgs<Mp3Frame> e) {
-            if(State != StromAufzeichnerStates.Recording) {
+            if(State != StreamRecorderStates.Recording) {
                 return;
             }
 

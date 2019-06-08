@@ -1,17 +1,17 @@
-﻿using StromReisser3000.Interfaces;
+﻿using StreamRipper.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StromReisser3000.Enums;
+using StreamRipper.Enums;
 using System.Collections.ObjectModel;
 
-namespace StromReisser3000.Domain {
-    public abstract class AbstractStromAufzeichner<TFrameType> : IStromAufzeichner {
-        public abstract IStromReisser CurrentRipper { get; }
+namespace StreamRipper.Domain {
+    public abstract class AbstractStreamRecorder<TFrameType> : IStreamRecorder {
+        public abstract IStreamRipper CurrentRipper { get; }
         public string OutputFileName { get; protected set; } = null;
-        public StromAufzeichnerStates State { get; protected set; } = StromAufzeichnerStates.Stopped;
+        public StreamRecorderStates State { get; protected set; } = StreamRecorderStates.Stopped;
 
         private object _lckEvt = new object();
         private readonly ICollection<RecordingEndedDelegate> _recordingEndedHandlers = new Collection<RecordingEndedDelegate>();

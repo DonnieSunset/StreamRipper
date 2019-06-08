@@ -1,8 +1,8 @@
 ﻿using NAudio.Lame;
 using NAudio.Wave;
-using StromReisser3000.Enums;
-using StromReisser3000.Exceptions;
-using StromReisser3000.Interfaces;
+using StreamRipper.Enums;
+using StreamRipper.Exceptions;
+using StreamRipper.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,14 +13,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace StromReisser3000.Domain {
-    public class Mp3StromReisser : AbstractStromReisser<Mp3Frame> {
+namespace StreamRipper.Domain {
+    public class Mp3StreamRipper : AbstractStreamRipperr<Mp3Frame> {
         private Mp3Frame _currentFrame;
         private IMp3FrameDecompressor _decompressor = null;
         private Mp3WaveFormat _waveFormat = null;
         private readonly byte[] _buffer = new byte[16384 * 4];
 
-        public Mp3StromReisser() {
+        public Mp3StreamRipper() {
         }
 
         protected override void RipLoop(Domain.BufferedStream bufferedStream) {

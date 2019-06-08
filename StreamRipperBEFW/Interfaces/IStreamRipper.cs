@@ -1,18 +1,18 @@
 ﻿using NAudio.Wave;
-using StromReisser3000.Domain;
-using StromReisser3000.Enums;
+using StreamRipper.Domain;
+using StreamRipper.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StromReisser3000.Interfaces {
+namespace StreamRipper.Interfaces {
     public delegate void StreamEndedDelegate(Exception e);
 
-    public interface IStromReisser : IDisposable {
+    public interface IStreamRipper : IDisposable {
         StreamSource CurrentStreamSource { get; }
-        StromReisserStates State { get; }
+        StreamRipperStates State { get; }
 
         void StartRip(StreamSource streamSource);
         void StopRip();

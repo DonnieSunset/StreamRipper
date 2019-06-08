@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StromReisser3000.Domain {
+namespace StreamRipper.Domain {
     public class PipeQueue<T> {
         private object _lck = new object();
         private int _capacity;

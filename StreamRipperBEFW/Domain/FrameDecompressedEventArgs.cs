@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StromReisser3000.Domain {
+namespace StreamRipper.Domain {
     public class FrameDecompressedEventArgs<T> {
         public StreamSource StreamSource { get; set; }
         public T Frame { get; set; }
