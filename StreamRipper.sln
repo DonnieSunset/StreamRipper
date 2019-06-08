@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StreamRipperBE", "StreamRipperBE\StreamRipperBE.csproj", "{1136FAD9-7FE0-40E4-8E25-89BF08304932}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamRipperConsole", "StreamRipperConsole\StreamRipperConsole.csproj", "{F9B34543-3DE9-44D4-9A89-5DBEC272803E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamRipperBEFW", "StreamRipperBEFW\StreamRipperBEFW.csproj", "{6FBC4FDA-F64C-4007-AB15-EF59ED1B1CB5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamRipperConsoleFW", "StreamRipperConsoleFW\StreamRipperConsoleFW.csproj", "{52264F4E-0401-4425-BBCF-AC5158FFEB29}"
@@ -17,14 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1136FAD9-7FE0-40E4-8E25-89BF08304932}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1136FAD9-7FE0-40E4-8E25-89BF08304932}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1136FAD9-7FE0-40E4-8E25-89BF08304932}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1136FAD9-7FE0-40E4-8E25-89BF08304932}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F9B34543-3DE9-44D4-9A89-5DBEC272803E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9B34543-3DE9-44D4-9A89-5DBEC272803E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9B34543-3DE9-44D4-9A89-5DBEC272803E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9B34543-3DE9-44D4-9A89-5DBEC272803E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6FBC4FDA-F64C-4007-AB15-EF59ED1B1CB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6FBC4FDA-F64C-4007-AB15-EF59ED1B1CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FBC4FDA-F64C-4007-AB15-EF59ED1B1CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
