@@ -47,8 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\AbstractStromAufzeichner.cs" />
-    <Compile Include="Domain\AbstractStromReisser.cs" />
+    <Compile Include="Domain\AbstractStreamRecorder.cs" />
+    <Compile Include="Domain\AbstractStreamRipperr.cs" />
     <Compile Include="Domain\AppSettings.cs" />
     <Compile Include="Domain\BufferedStream.cs" />
     <Compile Include="Domain\FrameDecompressedEventArgs.cs" />
