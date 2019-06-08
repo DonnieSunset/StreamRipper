@@ -58,7 +58,7 @@ namespace StreamRipperConsole
         {
             var now = DateTime.Now;
             var filePrefix = "Energy_Mastermix";
-            var pathPrefix = @"P:\tmp\Mastermix";
+            var pathPrefix = @"P:\Downloads\Mastermix";
             var dateStr = $"{now.Year}-{now.Month:00}-{now.Day:00}";
             var timeStr = $"{now.Hour:00}-{now.Minute:00}-{now.Second:00}";
             var fileName = $"{filePrefix}_{dateStr}_{timeStr}.mp3";
